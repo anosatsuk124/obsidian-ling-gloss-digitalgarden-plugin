@@ -1,23 +1,28 @@
 {
-	"name": "ling-gloss",
-	"version": "1.4.0",
-	"description": "Format interlinear glosses used in linguistics texts.",
+	"name": "obsidian-ling-gloss-markdown-it-plugin",
+	"version": "1.0.0",
+	"description": "format interlinear glosses used in linguistics texts.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
-		"build": "node esbuild.config.mjs production",
+		"build": "tsc",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
 	"keywords": [],
-	"author": "",
-	"license": "MIT",
+	"author": "Satsuki Akiba <anosatsuk124@gmail.com>",
+	"license": "Apache-2.0",
 	"devDependencies": {
 		"@types/node": "^16.11.6",
 		"@typescript-eslint/eslint-plugin": "5.29.0",
 		"@typescript-eslint/parser": "5.29.0",
 		"builtin-modules": "3.3.0",
-		"esbuild": "0.17.3",
 		"tslib": "2.4.0",
-		"typescript": "4.7.4"
+		"typescript": "4.7.4",
+		"@types/jsdom": "^21.1.6",
+		"@types/markdown-it": "^13.0.7"
+	},
+	"dependencies": {
+		"jsdom": "^23.0.1",
+		"markdown-it": "^13.0.2"
 	}
 }
