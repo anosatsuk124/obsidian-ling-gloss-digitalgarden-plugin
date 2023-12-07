@@ -1,20 +1,15 @@
-import { Plugin } from 'obsidian';
+import { GlossParser } from "src/gloss-parser";
+import { errorPrinter, glossPrinter } from "src/gloss-printer";
 
-import { GlossParser } from 'src/gloss-parser';
-import { errorPrinter, glossPrinter } from 'src/gloss-printer';
+const processGlossMarkdown = (source: string, nlevel: boolean): string => {
+	const parser = new GlossParser({ nlevel });
+	const gloss = parser.parse(source);
+	const el = document.createElement("div");
 
+	glossPrinter(gloss, el);
+	errorPrinter(parser.errors(), el);
 
-export default class LingGlossPlugin extends Plugin {
-    onload() {
-        this.registerMarkdownCodeBlockProcessor("gloss", (src, el, _) => this.processGlossMarkdown(src, el, false));
-        this.registerMarkdownCodeBlockProcessor("ngloss", (src, el, _) => this.processGlossMarkdown(src, el, true));
-    }
+	return el.innerHTML;
+};
 
-    private processGlossMarkdown(source: string, el: HTMLElement, nlevel: boolean) {
-        const parser = new GlossParser({ nlevel });
-        const gloss = parser.parse(source);
-
-        glossPrinter(gloss, el);
-        errorPrinter(parser.errors(), el);
-    }
-}
+export default processGlossMarkdown;
