@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-ling-gloss-markdown-it-plugin",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "format interlinear glosses used in linguistics texts.",
 	"main": "dist/main.js",
 	"files": [
